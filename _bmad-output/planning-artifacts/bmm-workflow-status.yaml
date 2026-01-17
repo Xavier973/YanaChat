@@ -1,0 +1,52 @@
+generated: "2026-01-15T00:00:00Z"
+project: "YanaChat"
+project_type: "Chatbot spécialisé sur la Guyane — fournir informations locales et aider à l'organisation de séjours"
+selected_track: "bmad-method"
+field_type: "greenfield"
+workflow_path: "_bmad/bmm/workflows/workflow-status/paths/method-greenfield.yaml"
+workflow_status:
+  - phase: "Analysis"
+    optional: true
+    workflows:
+      - id: "brainstorm-project"
+        included: true
+        status: "pending"
+        command: "/bmad:bmm:workflows:brainstorming"
+      - id: "product-brief"
+        included: true
+        status: "completed"
+        command: "/bmad:bmm:workflows:create-product-brief"
+        output_file: "_bmad-output/planning-artifacts/product-brief-YanaChat-2026-01-15.md"
+        completed_at: "2026-01-16T00:00:00Z"
+  - phase: "Planning"
+    required: true
+    workflows:
+      - id: "prd"
+        status: "in_progress"
+        output_file: "_bmad-output/planning-artifacts/prd.md"
+        created_at: "2026-01-16T00:00:00Z"
+        updated_at: "2026-01-16T00:12:00Z"
+        last_completed_step: 3
+        command: "/bmad:bmm:workflows:create-prd"
+      - id: "create-ux-design"
+        status: "conditional"
+        condition: "if_has_ui"
+        command: "/bmad:bmm:workflows:create-ux-design"
+  - phase: "Solutioning"
+    required: true
+    workflows:
+      - id: "create-architecture"
+        status: "pending"
+        command: "/bmad:bmm:workflows:create-architecture"
+      - id: "create-epics-and-stories"
+        status: "pending"
+        command: "/bmad:bmm:workflows:create-epics-and-stories"
+      - id: "implementation-readiness"
+        status: "pending"
+        command: "/bmad:bmm:workflows:implementation-readiness"
+  - phase: "Implementation"
+    required: true
+    workflows:
+      - id: "sprint-planning"
+        status: "pending"
+        command: "/bmad:bmm:workflows:sprint-planning"

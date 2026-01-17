@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  yana-backend:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./content/local:/app/content/local:ro
+    environment:
+      - PYTHONUNBUFFERED=1
+      - MISTRAL_API_URL=
+      - MISTRAL_API_KEY=

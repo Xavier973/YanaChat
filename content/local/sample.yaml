@@ -1,0 +1,11 @@
+- id: place-001
+  title: "Office du Tourisme de Cayenne"
+  text: "Office du Tourisme de Cayenne: ouvert du lundi au samedi 9h-17h. Adresse: Place des Palmistes. Contact: +594 594 00 00. Informations sur événements locaux et brochures disponibles."
+  source: "https://example.local/office-cayenne"
+  intent: "info"
+
+- id: place-002
+  title: "Plage de Montjoly"
+  text: "La plage de Montjoly est connue pour ses longues étendues de sable et ses spots de kitesurf. Accès gratuit, parking limité, prévoir protection solaire."
+  source: "https://example.local/plage-montjoly"
+  intent: "info"

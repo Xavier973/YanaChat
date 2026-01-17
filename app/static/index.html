@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>YanaChat PoC</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 20px; }
+      #chat { border: 1px solid #ddd; padding: 10px; height: 60vh; overflow:auto; }
+      .msg { margin: 8px 0; }
+      .user { color: #004; }
+      .bot { color: #060; }
+      #input { width: 80%; }
+    </style>
+  </head>
+  <body>
+    <h3>YanaChat — PoC</h3>
+    <div id="chat"></div>
+    <div style="margin-top:10px">
+      <input id="input" placeholder="Posez votre question..." />
+      <button id="send">Envoyer</button>
+    </div>
+
+    <script>
+      const chat = document.getElementById('chat');
+      const input = document.getElementById('input');
+      const send = document.getElementById('send');
+
+      function append(role, text, sources){
+        const d = document.createElement('div'); d.className='msg '+(role==='user'?'user':'bot');
+        d.innerHTML = `<b>${role}</b>: ${text}` + (sources?`<div style="font-size:smaller;color:#666">Sources: ${sources.join(', ')}</div>`:'');
+        chat.appendChild(d); chat.scrollTop = chat.scrollHeight;
+      }
+
+      send.onclick = async ()=>{
+        const q = input.value.trim(); if(!q) return;
+        append('user', q);
+        input.value='';
+        const res = await fetch('/api/query', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({text:q})});
+        const data = await res.json();
+        append('bot', data.answer, data.sources || []);
+      };
+    </script>
+  </body>
+</html>
