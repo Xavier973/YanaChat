@@ -8,5 +8,5 @@ services:
       - ./content/local:/app/content/local:ro
     environment:
       - PYTHONUNBUFFERED=1
-      - MISTRAL_API_URL=
-      - MISTRAL_API_KEY=
+    env_file:
+      - .env

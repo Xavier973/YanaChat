@@ -11,7 +11,7 @@ import requests
 app = FastAPI(title="YanaChat PoC API")
 
 # mount static UI (served at root)
-app.mount("/", StaticFiles(directory="app/static", html=True), name="static")
+app.mount("/ui", StaticFiles(directory="app/static", html=True), name="static")
 
 loader = ContentLoader(content_path="./content/local")
 loader.load_content()
@@ -23,38 +23,31 @@ class QueryRequest(BaseModel):
 
 
 def call_mistral(prompt: str) -> Optional[str]:
-    """Call the Mistral API using env vars MISTRAL_API_URL and MISTRAL_API_KEY.
-    If not configured, return None to indicate fallback behavior."""
     url = os.getenv("MISTRAL_API_URL")
     key = os.getenv("MISTRAL_API_KEY")
     if not url or not key:
         return None
-    headers = {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
-    payload = {"input": prompt}
+
+    headers = {
+        "Authorization": f"Bearer {key}",
+        "Content-Type": "application/json"
+    }
+
+    payload = {
+        "model": "mistral-small-latest",
+        "messages": [
+            {"role": "system", "content": "Tu es un assistant local fiable. Réponds uniquement à partir des documents fournis."},
+            {"role": "user", "content": prompt}
+        ],
+        "temperature": 0.2
+    }
+
     try:
-        r = requests.post(url, headers=headers, json=payload, timeout=15)
+        r = requests.post(url, headers=headers, json=payload, timeout=20)
         r.raise_for_status()
         data = r.json()
-        # Try common response shapes
-        if isinstance(data, dict):
-            if "output" in data and isinstance(data["output"], list):
-                # join content fields if present
-                parts = []
-                for item in data["output"]:
-                    if isinstance(item, dict):
-                        parts.append(item.get("content") or item.get("text") or str(item))
-                    else:
-                        parts.append(str(item))
-                return "\n".join(parts).strip()
-            if "choices" in data and data["choices"]:
-                c0 = data["choices"][0]
-                return c0.get("text") or c0.get("message", {}).get("content") or str(c0)
-            # fallback to a top-level text field
-            for key in ("text", "result", "output_text"):
-                if key in data:
-                    return str(data[key])
-        return str(data)
-    except Exception:
+        return data["choices"][0]["message"]["content"].strip()
+    except Exception as e:
         return None
 
 
