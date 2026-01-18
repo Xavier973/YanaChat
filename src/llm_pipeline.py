@@ -101,11 +101,16 @@ class LLMPipeline:
             }
         """
         
-        # Cas 1 : Résultats pertinents (score >= 2.0)
+        # Cas 1 : Résultats pertinents (score >= 2.0) ET sémantiquement proches
         if search_results and search_results[0]['score'] >= 2.0:
             pertinent_results = [r for r in search_results if r['score'] >= score_threshold]
             if pertinent_results:
-                return self._case_1_answer(user_query, pertinent_results)
+                # Vérifier que les résultats sont sémantiquement pertinents
+                if self._is_semantically_relevant(user_query, pertinent_results):
+                    return self._case_1_answer(user_query, pertinent_results)
+                else:
+                    # Score haut mais pas pertinent sémantiquement → Cas 3
+                    return self._case_3_generaliste(user_query)
         
         # Cas 2 : Résultats faibles/ambigus (0.5 <= score < 2.0)
         if search_results and 0.5 <= search_results[0]['score'] < 2.0:
@@ -132,6 +137,39 @@ class LLMPipeline:
         
         return word_count < 5 and avg_score < 1.5
     
+    def _is_semantically_relevant(self, query: str, results: List[Dict]) -> bool:
+        """
+        Vérifie que les résultats sont sémantiquement pertinents pour la requête.
+        Détecte les faux positifs BM25 (ex: restaurants trouvés pour "vaccins").
+        
+        Args:
+            query (str): Requête utilisateur
+            results (List[Dict]): Résultats de recherche
+        
+        Returns:
+            bool: True si les résultats sont pertinents
+        """
+        if not results:
+            return False
+        
+        # Extraire les mots-clés de la requête
+        query_lower = query.lower()
+        query_words = set(word.strip('.,!?;:') for word in query_lower.split() if len(word) > 2)
+        
+        # Vérifier que les excerpts contiennent des mots de la requête
+        excerpt_concat = " ".join([r.get('excerpt', '').lower() for r in results]).lower()
+        
+        # Besoin d'une couverture minimum des mots-clés
+        matches = sum(1 for word in query_words if word in excerpt_concat)
+        coverage = matches / len(query_words) if query_words else 0
+        
+        # Au moins 30% des mots-clés doivent être dans les excerpts
+        if coverage < 0.3:
+            print(f"  ⚠️ Faible pertinence sémantique ({coverage:.0%}): '{query_words}' vs excerpts")
+            return False
+        
+        return True
+    
     def _case_1_answer(
         self,
         user_query: str,
@@ -156,10 +194,22 @@ class LLMPipeline:
                 excerpt = excerpt[:500] + "..."
             
             doc_id = result.get('doc_id', 'unknown')
-            context_parts.append(f"[Source {i} - {doc_id}]\n{excerpt}")
+            website = result.get('website', '')
+            google_maps = result.get('google_maps', '')
+            
+            # Ajouter les liens au contexte si disponibles
+            links_info = ""
+            if website:
+                links_info += f"\nSite web: {website}"
+            if google_maps:
+                links_info += f"\nGoogle Maps: {google_maps}"
+            
+            context_parts.append(f"[Source {i} - {doc_id}]\n{excerpt}{links_info}")
             sources.append({
                 'doc_id': doc_id,
-                'score': result.get('score', 0)
+                'score': result.get('score', 0),
+                'website': website,
+                'google_maps': google_maps
             })
         
         context = "\n\n".join(context_parts)
@@ -169,9 +219,11 @@ class LLMPipeline:
             "Réponds en utilisant UNIQUEMENT les informations des sources fournies. "
             "Si tu trouves des détails concrets (noms, adresses, téléphones, prix), "
             "cite-les EXPLICITEMENT. "
+            "IMPORTANT: Si des liens web ou Google Maps sont fournis dans les sources, "
+            "tu DOIS les inclure dans ta réponse pour que l'utilisateur puisse y accéder. "
             "Ne dis JAMAIS 'la liste n'est pas détaillée'. "
-            "Sois utile et concis (2-4 phrases). "
-            "Recommande toujours de consulter Google Maps pour les horaires actuels."
+            "Sois utile et concis. "
+            "Formate ta réponse en liste numérotée (une ligne par restaurant)."
         )
         
         user_prompt = (

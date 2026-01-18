@@ -25,6 +25,8 @@ def parse_restaurants_from_markdown(content: str, filename: str) -> List[Dict]:
     - **Type :** Créole
     - **Adresse :** ...
     - **Téléphone :** ...
+    - **Site web :** ...
+    - **Google Maps :** ...
     
     Args:
         content (str): Contenu du fichier Markdown
@@ -33,6 +35,7 @@ def parse_restaurants_from_markdown(content: str, filename: str) -> List[Dict]:
     Returns:
         List[Dict]: Liste des restaurants avec leurs détails
     """
+    import re
     restaurants = []
     lines = content.split('\n')
     
@@ -40,6 +43,8 @@ def parse_restaurants_from_markdown(content: str, filename: str) -> List[Dict]:
     current_categorie = None
     current_restaurant = None
     current_text = []
+    current_website = None
+    current_gmaps = None
     
     for line in lines:
         # Détecter ville (## Ville)
@@ -63,15 +68,29 @@ def parse_restaurants_from_markdown(content: str, filename: str) -> List[Dict]:
                     'excerpt': restaurant_text[:300],
                     'full_text': restaurant_text,
                     'doc_type': 'restaurant',
+                    'website': current_website or '',
+                    'google_maps': current_gmaps or '',
                 })
             
             # Démarrer nouveau restaurant
             current_restaurant = {'name': line.replace('#### ', '').strip()}
             current_text = [line]
+            current_website = None
+            current_gmaps = None
         
-        # Accumuler le texte du restaurant
+        # Accumuler le texte du restaurant et extraire liens
         elif current_restaurant:
             current_text.append(line)
+            # Extraire site web
+            if '**Site web :**' in line or '**Site web:**' in line:
+                match = re.search(r'\*\*Site web\s*:\*\*\s*(.+)', line)
+                if match:
+                    current_website = match.group(1).strip()
+            # Extraire Google Maps
+            if '**Google Maps :**' in line or '**Google Maps:**' in line:
+                match = re.search(r'\[Voir\]\((.+?)\)', line)
+                if match:
+                    current_gmaps = match.group(1).strip()
     
     # Sauvegarder le dernier restaurant
     if current_restaurant:
@@ -84,6 +103,8 @@ def parse_restaurants_from_markdown(content: str, filename: str) -> List[Dict]:
             'excerpt': restaurant_text[:300],
             'full_text': restaurant_text,
             'doc_type': 'restaurant',
+            'website': current_website or '',
+            'google_maps': current_gmaps or '',
         })
     
     return restaurants
@@ -176,6 +197,8 @@ def create_index():
         ville=STORED(),  # Ville (pour restaurants)
         categorie=STORED(),  # Catégorie (pour restaurants)
         filename=STORED(),  # Fichier d'origine
+        website=STORED(),  # Site web (pour restaurants)
+        google_maps=STORED(),  # Lien Google Maps (pour restaurants)
     )
     
     ix = create_in(str(INDEX_DIR), schema)
@@ -222,6 +245,8 @@ def create_index():
                         ville=restaurant.get('ville', 'Unknown'),
                         categorie=restaurant.get('categorie', 'Unknown'),
                         filename=filename,
+                        website=restaurant.get('website', ''),
+                        google_maps=restaurant.get('google_maps', ''),
                     )
                 
                 print(f"  ✓ {md_file.name:<35} : {len(restaurants):>3} restaurants")
@@ -241,6 +266,8 @@ def create_index():
                     ville='',
                     categorie='',
                     filename=filename,
+                    website='',
+                    google_maps='',
                 )
                 
                 print(f"  ✓ {md_file.name:<35} : document générique")

@@ -90,6 +90,7 @@
             word-wrap: break-word;
             font-size: 14px;
             line-height: 1.4;
+            white-space: pre-line;
         }
         
         .case-badge {
@@ -255,7 +256,7 @@
                 const caseClasses = ['', 'case-1', 'case-2', 'case-3'];
                 
                 let responseHtml = `<div class="bubble">
-                    ${data.response}
+                    ${linkifyUrls(data.response)}
                     <div class="case-badge ${caseClasses[data.case]}">
                         Cas ${data.case}: ${caseNames[data.case]}
                     </div>
@@ -290,6 +291,28 @@
             const div = document.createElement('div');
             div.textContent = text;
             return div.innerHTML;
+        }
+        
+        function linkifyUrls(text) {
+            // Regex pour détecter les URLs http/https
+            const urlRegex = /(https?:\/\/[^\s)]+)/gi;
+            return text.replace(urlRegex, (url) => {
+                // Nettoyer les caractères de ponctuation à la fin si nécessaire
+                let cleanUrl = url;
+                let suffix = '';
+                if (url.endsWith(')')) {
+                    cleanUrl = url.slice(0, -1);
+                    suffix = ')';
+                }
+                // Créer un lien avec le domaine comme texte visible
+                try {
+                    const urlObj = new URL(cleanUrl);
+                    const domain = urlObj.hostname.replace('www.', '');
+                    return `<a href="${cleanUrl}" target="_blank" style="color: #667eea; text-decoration: underline; cursor: pointer;">${domain}</a>${suffix}`;
+                } catch (e) {
+                    return url;
+                }
+            });
         }
         
         // Message de bienvenue
