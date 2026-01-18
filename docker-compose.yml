@@ -1,12 +1,53 @@
 version: '3.8'
+
 services:
   yana-backend:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+    
+    container_name: yanachat-api
+    
     ports:
       - "8000:8000"
+    
     volumes:
-      - ./content/local:/app/content/local:ro
+      # Corpus et index persistants
+      - ./data/corpus:/app/data/corpus:ro
+      - ./data/index:/app/data/index
+      # Logs persistants
+      - ./logs:/app/logs
+      # Code source (reload en dev)
+      - ./src:/app/src
+      - ./app:/app/app
+    
     environment:
       - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+    
     env_file:
       - .env
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    
+    # Restart automatique
+    restart: unless-stopped
+    
+    # Logs
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+# Volume nommé optionnel (pour persister les données)
+volumes:
+  corpus_data:
+  index_data:
+  logs_data:

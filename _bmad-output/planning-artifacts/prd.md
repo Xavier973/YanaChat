@@ -120,7 +120,7 @@ _Étape 02 (Discovery) terminée. Le PRD passe maintenant à l'étape 03 - Produ
 
 ## 03.2 — Conséquences pour l'implémentation (périmètre minimal)
 
-- Prioriser la couverture des intents touristiques fréquents (hébergement, transport, attractions, météo, santé, sécurité).
+- Prioriser la couverture des intents touristiques fréquents (hébergement, transport, attractions, santé, sécurité).
 - Implémenter pipelines d'évaluation et monitoring (logs, conversation sampling, métriques de précision) pour mesurer les critères ci‑dessus.
 
 _Prochaine action : générer les exigences détaillées (features, user stories, critères d'acceptation) basées sur cette Product Vision._

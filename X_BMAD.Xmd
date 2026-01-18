@@ -1,0 +1,48 @@
+## Politique de réponse
+
+### Cas 1 — Réponse autorisée avec sources
+Une réponse est fournie lorsque :
+- la recherche BM25 retourne au moins un résultat pertinent,
+- la pertinence est jugée suffisante (score > seuil minimal),
+- la réponse peut être construite exclusivement à partir des contenus locaux.
+
+Dans ce cas :
+- la réponse est basée uniquement sur les sources locales,
+- les sources utilisées sont listées explicitement,
+- le LLM peut reformuler la réponse mais ne doit pas ajouter d’information.
+
+---
+
+### Cas 2 — Demande de précision
+Une demande de précision est faite lorsque :
+- la requête est ambiguë ou trop large,
+- plusieurs interprétations sont possibles,
+- la recherche BM25 retourne des résultats faibles ou partiels.
+
+Dans ce cas :
+- aucune réponse factuelle n’est fournie,
+- l’utilisateur est invité à reformuler ou préciser sa question,
+- aucune source n’est citée.
+
+---
+
+### Cas 3 — Refus hors-périmètre
+Un refus est retourné lorsque :
+- aucun résultat pertinent n’est trouvé,
+- la question est clairement hors du corpus local,
+- répondre nécessiterait une connaissance externe.
+
+Dans ce cas :
+- le système indique explicitement que l’information n’est pas disponible,
+- aucune tentative de réponse n’est faite,
+- aucune source n’est citée.
+
+---
+
+## Rôle du LLM
+- Le LLM n’est jamais une source de connaissance.
+- Il intervient uniquement pour :
+  - reformuler une réponse validée par BM25,
+  - formuler un message de refus clair,
+  - formuler une demande de précision compréhensible.
+- Le LLM ne répond jamais seul et n’invente jamais de contenu.

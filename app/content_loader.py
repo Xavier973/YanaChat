@@ -48,6 +48,7 @@ class ContentLoader:
         q_tokens = self._tokenize(query)
         scores = self.bm25.get_scores(q_tokens)
         ranked = sorted([{'doc': d, 'score': float(scores[i])} for i, d in enumerate(self.docs)], key=lambda x: x['score'], reverse=True)
+        ranked = [r for r in ranked if r["score"] > 0.0]
         results = []
         for r in ranked[:top_k]:
             doc = r['doc'].copy()
