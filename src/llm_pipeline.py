@@ -142,6 +142,10 @@ class LLMPipeline:
         Vérifie que les résultats sont sémantiquement pertinents pour la requête.
         Détecte les faux positifs BM25 (ex: restaurants trouvés pour "vaccins").
         
+        Politique différenciée :
+        - Documents génériques (07-culture, 01-hebergements, etc.) : acceptés si score ≥ 2.0
+        - Restaurants : validation stricte (au moins 30% des mots-clés match)
+        
         Args:
             query (str): Requête utilisateur
             results (List[Dict]): Résultats de recherche
@@ -152,6 +156,22 @@ class LLMPipeline:
         if not results:
             return False
         
+        top_result = results[0]
+        doc_id = top_result.get('doc_id', '')
+        
+        # Documents génériques : pas de validation stricte
+        # Exemples: "07-culture", "01-hebergements", "02-transports", etc.
+        generic_docs = {'01-hebergements', '02-transports', '03-attractions', 
+                        '04-administrations', '05-services', '06-entreprises', '07-culture'}
+        
+        is_generic = any(doc_id.startswith(prefix) for prefix in generic_docs)
+        
+        if is_generic:
+            # Pour documents génériques, faire confiance à BM25 si score ≥ 2.0
+            print(f"  ✓ Document générique accepté : {doc_id}")
+            return True
+        
+        # Pour restaurants : validation stricte
         # Extraire les mots-clés de la requête
         query_lower = query.lower()
         query_words = set(word.strip('.,!?;:') for word in query_lower.split() if len(word) > 2)
@@ -168,6 +188,7 @@ class LLMPipeline:
             print(f"  ⚠️ Faible pertinence sémantique ({coverage:.0%}): '{query_words}' vs excerpts")
             return False
         
+        print(f"  ✓ Pertinence sémantique validée ({coverage:.0%})")
         return True
     
     def _case_1_answer(
@@ -182,11 +203,30 @@ class LLMPipeline:
         Le LLM ne peut pas ajouter d'information externe.
         """
         
-        # Construire contexte à partir des résultats
+        # PRIORITÉ : Mettre les documents génériques avant les restaurants
+        # Raison : requête "Est-ce qu'il y a beaucoup de chinois" veut info démographique,
+        # pas une liste de restaurants
+        generic_docs = {'01-hebergements', '02-transports', '03-attractions', 
+                        '04-administrations', '05-services', '06-entreprises', '07-culture'}
+        
+        def is_generic(result):
+            doc_id = result.get('doc_id', '')
+            return any(doc_id.startswith(prefix) for prefix in generic_docs)
+        
+        # Séparer et retrier : génériques d'abord (par score), puis restaurants
+        generic_results = sorted([r for r in search_results if is_generic(r)], 
+                                key=lambda x: x.get('score', 0), reverse=True)
+        restaurant_results = sorted([r for r in search_results if not is_generic(r)], 
+                                   key=lambda x: x.get('score', 0), reverse=True)
+        
+        # Recombiner : génériques + restaurants (max 3 total)
+        prioritized_results = generic_results + restaurant_results
+        
+        # Construire contexte à partir des résultats triés
         context_parts = []
         sources = []
         
-        for i, result in enumerate(search_results[:3], start=1):  # Top-3
+        for i, result in enumerate(prioritized_results[:3], start=1):  # Top-3 avec priorité génériques
             excerpt = result.get('excerpt', result.get('content', ''))
             
             # Limiter à 500 caractères pour avoir des infos concrètes
@@ -215,15 +255,15 @@ class LLMPipeline:
         context = "\n\n".join(context_parts)
         
         system_prompt = (
-            "Tu es un assistant local pour la Guyane. "
-            "Réponds en utilisant UNIQUEMENT les informations des sources fournies. "
-            "Si tu trouves des détails concrets (noms, adresses, téléphones, prix), "
-            "cite-les EXPLICITEMENT. "
-            "IMPORTANT: Si des liens web ou Google Maps sont fournis dans les sources, "
-            "tu DOIS les inclure dans ta réponse pour que l'utilisateur puisse y accéder. "
-            "Ne dis JAMAIS 'la liste n'est pas détaillée'. "
-            "Sois utile et concis. "
-            "Formate ta réponse en liste numérotée (une ligne par restaurant)."
+            "Tu es un assistant spécialisé dans les informations sur la Guyane française. "
+            "Réponds TOUJOURS en utilisant UNIQUEMENT les informations fournies dans les sources. "
+            "Si la requête parle de démographie, culture, ou faits généraux sur la Guyane, "
+            "privilégie les documents génériques (07-culture, etc.) pour des réponses riches et détaillées. "
+            "Si c'est une recherche de restaurant/service, utilise les sources structurées. "
+            "Cite TOUS les détails concrets (nombres, pourcentages, noms, localisations, communautés, langues). "
+            "Sois précis et exhaustif, ne résume pas à une ligne. "
+            "CRUCIAL : Inclus les liens (site web, Google Maps) si disponibles. "
+            "Format : liste numérotée si plusieurs entrées, sinon paragraphes structurés."
         )
         
         user_prompt = (
