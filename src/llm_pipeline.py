@@ -101,11 +101,16 @@ class LLMPipeline:
             }
         """
         
-        # Cas 1 : Résultats pertinents (score >= 2.0)
+        # Cas 1 : Résultats pertinents (score >= 2.0) ET sémantiquement proches
         if search_results and search_results[0]['score'] >= 2.0:
             pertinent_results = [r for r in search_results if r['score'] >= score_threshold]
             if pertinent_results:
-                return self._case_1_answer(user_query, pertinent_results)
+                # Vérifier que les résultats sont sémantiquement pertinents
+                if self._is_semantically_relevant(user_query, pertinent_results):
+                    return self._case_1_answer(user_query, pertinent_results)
+                else:
+                    # Score haut mais pas pertinent sémantiquement → Cas 3
+                    return self._case_3_generaliste(user_query)
         
         # Cas 2 : Résultats faibles/ambigus (0.5 <= score < 2.0)
         if search_results and 0.5 <= search_results[0]['score'] < 2.0:
@@ -132,6 +137,60 @@ class LLMPipeline:
         
         return word_count < 5 and avg_score < 1.5
     
+    def _is_semantically_relevant(self, query: str, results: List[Dict]) -> bool:
+        """
+        Vérifie que les résultats sont sémantiquement pertinents pour la requête.
+        Détecte les faux positifs BM25 (ex: restaurants trouvés pour "vaccins").
+        
+        Politique différenciée :
+        - Documents génériques (07-culture, 01-hebergements, etc.) : acceptés si score ≥ 2.0
+        - Restaurants : validation stricte (au moins 30% des mots-clés match)
+        
+        Args:
+            query (str): Requête utilisateur
+            results (List[Dict]): Résultats de recherche
+        
+        Returns:
+            bool: True si les résultats sont pertinents
+        """
+        if not results:
+            return False
+        
+        top_result = results[0]
+        doc_id = top_result.get('doc_id', '')
+        
+        # Documents génériques : pas de validation stricte
+        # Exemples: "07-culture", "01-hebergements", "02-transports", etc.
+        generic_docs = {'01-hebergements', '02-transports', '03-attractions', 
+                        '04-administrations', '05-services', '06-entreprises', '07-culture'}
+        
+        is_generic = any(doc_id.startswith(prefix) for prefix in generic_docs)
+        
+        if is_generic:
+            # Pour documents génériques, faire confiance à BM25 si score ≥ 2.0
+            print(f"  ✓ Document générique accepté : {doc_id}")
+            return True
+        
+        # Pour restaurants : validation stricte
+        # Extraire les mots-clés de la requête
+        query_lower = query.lower()
+        query_words = set(word.strip('.,!?;:') for word in query_lower.split() if len(word) > 2)
+        
+        # Vérifier que les excerpts contiennent des mots de la requête
+        excerpt_concat = " ".join([r.get('excerpt', '').lower() for r in results]).lower()
+        
+        # Besoin d'une couverture minimum des mots-clés
+        matches = sum(1 for word in query_words if word in excerpt_concat)
+        coverage = matches / len(query_words) if query_words else 0
+        
+        # Au moins 30% des mots-clés doivent être dans les excerpts
+        if coverage < 0.3:
+            print(f"  ⚠️ Faible pertinence sémantique ({coverage:.0%}): '{query_words}' vs excerpts")
+            return False
+        
+        print(f"  ✓ Pertinence sémantique validée ({coverage:.0%})")
+        return True
+    
     def _case_1_answer(
         self,
         user_query: str,
@@ -144,11 +203,30 @@ class LLMPipeline:
         Le LLM ne peut pas ajouter d'information externe.
         """
         
-        # Construire contexte à partir des résultats
+        # PRIORITÉ : Mettre les documents génériques avant les restaurants
+        # Raison : requête "Est-ce qu'il y a beaucoup de chinois" veut info démographique,
+        # pas une liste de restaurants
+        generic_docs = {'01-hebergements', '02-transports', '03-attractions', 
+                        '04-administrations', '05-services', '06-entreprises', '07-culture'}
+        
+        def is_generic(result):
+            doc_id = result.get('doc_id', '')
+            return any(doc_id.startswith(prefix) for prefix in generic_docs)
+        
+        # Séparer et retrier : génériques d'abord (par score), puis restaurants
+        generic_results = sorted([r for r in search_results if is_generic(r)], 
+                                key=lambda x: x.get('score', 0), reverse=True)
+        restaurant_results = sorted([r for r in search_results if not is_generic(r)], 
+                                   key=lambda x: x.get('score', 0), reverse=True)
+        
+        # Recombiner : génériques + restaurants (max 3 total)
+        prioritized_results = generic_results + restaurant_results
+        
+        # Construire contexte à partir des résultats triés
         context_parts = []
         sources = []
         
-        for i, result in enumerate(search_results[:3], start=1):  # Top-3
+        for i, result in enumerate(prioritized_results[:3], start=1):  # Top-3 avec priorité génériques
             excerpt = result.get('excerpt', result.get('content', ''))
             
             # Limiter à 500 caractères pour avoir des infos concrètes
@@ -156,22 +234,36 @@ class LLMPipeline:
                 excerpt = excerpt[:500] + "..."
             
             doc_id = result.get('doc_id', 'unknown')
-            context_parts.append(f"[Source {i} - {doc_id}]\n{excerpt}")
+            website = result.get('website', '')
+            google_maps = result.get('google_maps', '')
+            
+            # Ajouter les liens au contexte si disponibles
+            links_info = ""
+            if website:
+                links_info += f"\nSite web: {website}"
+            if google_maps:
+                links_info += f"\nGoogle Maps: {google_maps}"
+            
+            context_parts.append(f"[Source {i} - {doc_id}]\n{excerpt}{links_info}")
             sources.append({
                 'doc_id': doc_id,
-                'score': result.get('score', 0)
+                'score': result.get('score', 0),
+                'website': website,
+                'google_maps': google_maps
             })
         
         context = "\n\n".join(context_parts)
         
         system_prompt = (
-            "Tu es un assistant local pour la Guyane. "
-            "Réponds en utilisant UNIQUEMENT les informations des sources fournies. "
-            "Si tu trouves des détails concrets (noms, adresses, téléphones, prix), "
-            "cite-les EXPLICITEMENT. "
-            "Ne dis JAMAIS 'la liste n'est pas détaillée'. "
-            "Sois utile et concis (2-4 phrases). "
-            "Recommande toujours de consulter Google Maps pour les horaires actuels."
+            "Tu es un assistant spécialisé dans les informations sur la Guyane française. "
+            "Réponds TOUJOURS en utilisant UNIQUEMENT les informations fournies dans les sources. "
+            "Si la requête parle de démographie, culture, ou faits généraux sur la Guyane, "
+            "privilégie les documents génériques (07-culture, etc.) pour des réponses riches et détaillées. "
+            "Si c'est une recherche de restaurant/service, utilise les sources structurées. "
+            "Cite TOUS les détails concrets (nombres, pourcentages, noms, localisations, communautés, langues). "
+            "Sois précis et exhaustif, ne résume pas à une ligne. "
+            "CRUCIAL : Inclus les liens (site web, Google Maps) si disponibles. "
+            "Format : liste numérotée si plusieurs entrées, sinon paragraphes structurés."
         )
         
         user_prompt = (

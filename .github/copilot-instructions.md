@@ -26,7 +26,7 @@ Utilisateur → FastAPI (/api/chat) → ChatHandler
 
 | Dossier | Rôle | Détails |
 |---------|------|---------|
-| `app/` | Backend FastAPI | `main.py` = endpoints (`/api/chat`, `/api/stats`, `/health`), `content_loader.py` chargement YAML |
+| `app/` | Backend FastAPI | `main.py` = endpoints (`/api/chat`, `/api/stats`, `/health`) |
 | `src/` | Logique métier | `chat_handler.py` = orchestration, `search_bm25.py` = requêtes Whoosh, `llm_pipeline.py` = politique LLM |
 | `data/corpus/` | Documents source | Markdown par catégorie (25+ fichiers `{N}-restaurants-*.md`), parsés en entités atomiques |
 | `data/index/` | Index Whoosh | Généré par `index_corpus.py`, persistant, réutilisé au runtime |

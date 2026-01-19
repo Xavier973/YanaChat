@@ -91,7 +91,9 @@ class BM25SearchEngine:
                             "doc_type": hit.get("doc_type", "unknown"),
                             "ville": hit.get("ville", ""),
                             "categorie": hit.get("categorie", ""),
-                            "excerpt": hit.get("excerpt", "")[:200] + "..."
+                            "excerpt": hit.get("excerpt", "")[:200] + "...",
+                            "website": hit.get("website", ""),
+                            "google_maps": hit.get("google_maps", "")
                         })
                 
                 print(f"  ✓ Retour {len(filtered_results)} résultats filtrés")

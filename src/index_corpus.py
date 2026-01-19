@@ -25,6 +25,8 @@ def parse_restaurants_from_markdown(content: str, filename: str) -> List[Dict]:
     - **Type :** Créole
     - **Adresse :** ...
     - **Téléphone :** ...
+    - **Site web :** ...
+    - **Google Maps :** ...
     
     Args:
         content (str): Contenu du fichier Markdown
@@ -33,6 +35,7 @@ def parse_restaurants_from_markdown(content: str, filename: str) -> List[Dict]:
     Returns:
         List[Dict]: Liste des restaurants avec leurs détails
     """
+    import re
     restaurants = []
     lines = content.split('\n')
     
@@ -40,6 +43,8 @@ def parse_restaurants_from_markdown(content: str, filename: str) -> List[Dict]:
     current_categorie = None
     current_restaurant = None
     current_text = []
+    current_website = None
+    current_gmaps = None
     
     for line in lines:
         # Détecter ville (## Ville)
@@ -63,15 +68,29 @@ def parse_restaurants_from_markdown(content: str, filename: str) -> List[Dict]:
                     'excerpt': restaurant_text[:300],
                     'full_text': restaurant_text,
                     'doc_type': 'restaurant',
+                    'website': current_website or '',
+                    'google_maps': current_gmaps or '',
                 })
             
             # Démarrer nouveau restaurant
             current_restaurant = {'name': line.replace('#### ', '').strip()}
             current_text = [line]
+            current_website = None
+            current_gmaps = None
         
-        # Accumuler le texte du restaurant
+        # Accumuler le texte du restaurant et extraire liens
         elif current_restaurant:
             current_text.append(line)
+            # Extraire site web
+            if '**Site web :**' in line or '**Site web:**' in line:
+                match = re.search(r'\*\*Site web\s*:\*\*\s*(.+)', line)
+                if match:
+                    current_website = match.group(1).strip()
+            # Extraire Google Maps
+            if '**Google Maps :**' in line or '**Google Maps:**' in line:
+                match = re.search(r'\[Voir\]\((.+?)\)', line)
+                if match:
+                    current_gmaps = match.group(1).strip()
     
     # Sauvegarder le dernier restaurant
     if current_restaurant:
@@ -84,48 +103,100 @@ def parse_restaurants_from_markdown(content: str, filename: str) -> List[Dict]:
             'excerpt': restaurant_text[:300],
             'full_text': restaurant_text,
             'doc_type': 'restaurant',
+            'website': current_website or '',
+            'google_maps': current_gmaps or '',
         })
     
     return restaurants
 
 
-def parse_generic_markdown(content: str, filename: str) -> Dict:
+def parse_generic_markdown(content: str, filename: str) -> List[Dict]:
     """
     Parse un fichier Markdown générique (non-restaurant).
-    Extrait le titre et le contenu.
+    Crée des documents SÉPARÉS pour chaque section (## Titre).
+    Cela permet une meilleure indexation et recherche granulaire.
     
     Format :
-    # Titre
-    Contenu...
+    # Titre Principal
+    ## Section 1
+    Contenu section 1...
+    
+    ## Section 2
+    Contenu section 2...
     
     Args:
         content (str): Contenu du fichier Markdown
         filename (str): Nom du fichier
     
     Returns:
-        Dict: Document avec titre et contenu
+        List[Dict]: Liste de documents (un par section majeure)
     """
+    import re
+    documents = []
     lines = content.split('\n')
     
-    # Extraire titre (première ligne avec #)
-    title = filename
+    # Extraire titre principal (première ligne avec #)
+    main_title = filename
     for line in lines:
-        if line.startswith('# '):
-            title = line.replace('# ', '').strip()
+        if line.startswith('# ') and not line.startswith('## '):
+            main_title = line.replace('# ', '').strip()
             break
     
-    # Limiter le contenu à 1000 caractères pour l'excerpt
-    excerpt = content[:1000]
-    if len(content) > 1000:
-        excerpt += "..."
+    # Splitter par sections de niveau 2 (##)
+    current_section = None
+    current_section_content = []
     
-    return {
-        'doc_id': filename,
-        'name': title,
-        'excerpt': excerpt,
-        'full_text': content,
-        'doc_type': 'generic',
-    }
+    for line in lines:
+        # Détecter nouvelle section (## Titre)
+        if line.startswith('## ') and not line.startswith('### '):
+            # Sauvegarder la section précédente
+            if current_section:
+                section_text = '\n'.join(current_section_content).strip()
+                if section_text:  # Ne sauvegarder que si non-vide
+                    doc_id = f"{filename}_{current_section[:25].replace(' ', '_').replace('é', 'e')}"
+                    documents.append({
+                        'doc_id': doc_id,
+                        'name': current_section,
+                        'excerpt': section_text[:300],
+                        'full_text': section_text,
+                        'doc_type': 'generic',
+                    })
+            
+            # Démarrer nouvelle section
+            current_section = line.replace('## ', '').strip()
+            current_section_content = [line]
+        
+        # Accumuler le contenu de la section
+        elif current_section:
+            current_section_content.append(line)
+    
+    # Sauvegarder la dernière section
+    if current_section:
+        section_text = '\n'.join(current_section_content).strip()
+        if section_text:
+            doc_id = f"{filename}_{current_section[:25].replace(' ', '_').replace('é', 'e')}"
+            documents.append({
+                'doc_id': doc_id,
+                'name': current_section,
+                'excerpt': section_text[:300],
+                'full_text': section_text,
+                'doc_type': 'generic',
+            })
+    
+    # Si aucune section trouvée, créer document global
+    if not documents:
+        excerpt = content[:300]
+        if len(content) > 300:
+            excerpt += "..."
+        documents.append({
+            'doc_id': filename,
+            'name': main_title,
+            'excerpt': excerpt,
+            'full_text': content,
+            'doc_type': 'generic',
+        })
+    
+    return documents
 
 
 def is_restaurant_file(filename: str) -> bool:
@@ -176,6 +247,8 @@ def create_index():
         ville=STORED(),  # Ville (pour restaurants)
         categorie=STORED(),  # Catégorie (pour restaurants)
         filename=STORED(),  # Fichier d'origine
+        website=STORED(),  # Site web (pour restaurants)
+        google_maps=STORED(),  # Lien Google Maps (pour restaurants)
     )
     
     ix = create_in(str(INDEX_DIR), schema)
@@ -222,6 +295,8 @@ def create_index():
                         ville=restaurant.get('ville', 'Unknown'),
                         categorie=restaurant.get('categorie', 'Unknown'),
                         filename=filename,
+                        website=restaurant.get('website', ''),
+                        google_maps=restaurant.get('google_maps', ''),
                     )
                 
                 print(f"  ✓ {md_file.name:<35} : {len(restaurants):>3} restaurants")
@@ -229,23 +304,26 @@ def create_index():
                 total_documents += len(restaurants)
             
             else:
-                # ✅ Fichier générique : indexer entièrement
-                doc = parse_generic_markdown(content, filename)
+                # ✅ Fichier générique : indexer par sections
+                docs = parse_generic_markdown(content, filename)
                 
-                writer.add_document(
-                    doc_id=doc['doc_id'],
-                    name=doc['name'],
-                    excerpt=doc['excerpt'],
-                    content=doc['full_text'],
-                    doc_type=doc['doc_type'],
-                    ville='',
-                    categorie='',
-                    filename=filename,
-                )
+                for doc in docs:
+                    writer.add_document(
+                        doc_id=doc['doc_id'],
+                        name=doc['name'],
+                        excerpt=doc['excerpt'],
+                        content=doc['full_text'],
+                        doc_type=doc['doc_type'],
+                        ville='',
+                        categorie='',
+                        filename=filename,
+                        website='',
+                        google_maps='',
+                    )
                 
-                print(f"  ✓ {md_file.name:<35} : document générique")
-                generic_count += 1
-                total_documents += 1
+                print(f"  ✓ {md_file.name:<35} : {len(docs)} section(s)")
+                generic_count += len(docs)
+                total_documents += len(docs)
         
         except Exception as e:
             print(f"  ✗ Erreur {md_file.name}: {e}")
