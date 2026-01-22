@@ -29,6 +29,7 @@ class LLMPipeline:
         """Initialise le pipeline avec credentials Mistral."""
         self.api_url = os.getenv("MISTRAL_API_URL")
         self.api_key = os.getenv("MISTRAL_API_KEY")
+        self.model = "mistral-large-latest"  # Modèle utilisé
         
         if not self.api_url or not self.api_key:
             raise RuntimeError(
@@ -36,7 +37,7 @@ class LLMPipeline:
                 "Définir MISTRAL_API_URL et MISTRAL_API_KEY dans .env"
             )
         
-        print(f"✓ LLMPipeline initialisé (Mistral API)")
+        print(f"✓ LLMPipeline initialisé (Mistral API - {self.model})")
     
     def _call_mistral(self, system_prompt: str, user_prompt: str) -> Optional[str]:
         """
@@ -55,7 +56,7 @@ class LLMPipeline:
         }
         
         payload = {
-            "model": "mistral-small-latest",
+            "model": self.model,
             "messages": [
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt}
@@ -286,7 +287,8 @@ class LLMPipeline:
                 "top_score": search_results[0]['score'],
                 "results_count": len(search_results),
                 "status": "success",
-                "source_type": "local"
+                "source_type": "local",
+                "model": self.model
             }
         }
     
@@ -324,7 +326,8 @@ class LLMPipeline:
             "response": llm_response,
             "sources": [],
             "metadata": {
-                "status": "clarification_needed"
+                "status": "clarification_needed",
+                "model": self.model
             }
         }
     
@@ -364,7 +367,8 @@ class LLMPipeline:
             "sources": [],
             "metadata": {
                 "status": "generaliste",
-                "source_type": "llm_only"
+                "source_type": "llm_only",
+                "model": self.model
             }
         }
 

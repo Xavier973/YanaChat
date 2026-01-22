@@ -142,10 +142,10 @@ class ChatHandler:
             }
         }
         
-        # Écrire dans fichier JSONL
+        # Écrire dans fichier JSONL (avec indentation pour lisibilité)
         try:
             with open(LOGS_DIR / "interactions.jsonl", "a", encoding='utf-8') as f:
-                f.write(json.dumps(log_entry, ensure_ascii=False) + "\n")
+                f.write(json.dumps(log_entry, ensure_ascii=False, indent=2) + "\n")
             print(f"  ✓ Interaction loggée")
         except Exception as e:
             print(f"  ⚠️ Erreur logging: {e}")
