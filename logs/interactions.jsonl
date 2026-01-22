@@ -1499,3 +1499,1251 @@
     }
   }
 }
+{
+  "timestamp": "2026-01-22T19:40:50.847314",
+  "session_id": "unknown",
+  "user_query": "Que faire en 5 jours en Guyane ?",
+  "search": {
+    "results_count": 3,
+    "top_result": "04-administrations_Mairie_de_Cayenne",
+    "top_score": 5.987116572399201
+  },
+  "response": {
+    "case": 1,
+    "text": "## Mairie de Cayenne\n\n### Accueil général\n- **Adresse :** Place du Gouverneur Félix Éboué, Cayenne\n- **Horaires :** Lun–Ven 8h–17h, Sam 8h–12h\n- **Services :** Extraits de naissance, cartes d'identité...",
+    "sources": [
+      {
+        "doc_id": "04-administrations_Mairie_de_Cayenne",
+        "score": 5.987116572399201,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "07-culture_Amerindiens",
+        "score": 3.1703943092498177,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "13-restaurants-remire_montjoly_Delicias_Guyane",
+        "score": 1.6516040394206828,
+        "website": "instagram.com",
+        "google_maps": "https://www.google.com/maps/place/Delicias+Guyane/data=!4m7!3m6!1s0x8d123bb99698a723:0xb369ff24b4a57956!8m2!3d4.8878076!4d-52.2769256!16s%2Fg%2F11ry0hsy48!19sChIJI6eYlrk7Eo0RVnmltCT_abM?authuser=0&hl=fr&rclk=1"
+      }
+    ],
+    "metadata": {
+      "top_score": 5.987116572399201,
+      "results_count": 3,
+      "status": "success",
+      "source_type": "local",
+      "model": "mistral-large-latest"
+    }
+  }
+}
+{
+  "timestamp": "2026-01-22T19:41:11.258843",
+  "session_id": "unknown",
+  "user_query": "Où dormir pour mon séjour en Guyane ?",
+  "search": {
+    "results_count": 3,
+    "top_result": "04-administrations_Prefecture_de_la_Guyane",
+    "top_score": 9.075472817101215
+  },
+  "response": {
+    "case": 1,
+    "text": "Voici les informations précises sur les options d'hébergement disponibles à Cayenne, en Guyane française, selon les sources fournies :\n\n1. **Hôtel Le Bresilien**\n   - **Type d'hébergement :** Hôtel 3 étoiles\n   - **Localisation :** Rue Lallouette, Cayenne (centre-ville)\n   - **Prix :** Entre 80 € et 120 € par nuit (tarif moyen pour un budget modéré)\n   - **Lien utile :** Pour plus d'informations ou pour réserver, consultez le site officiel de l'hôtel (lien partiel : [https://www.hot...](https://",
+    "sources": [
+      {
+        "doc_id": "04-administrations_Prefecture_de_la_Guyane",
+        "score": 9.075472817101215,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "01-hebergements_Cayenne_-_Centre-ville",
+        "score": 5.869883537320595,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "13-restaurants-remire_montjoly_Delicias_Guyane",
+        "score": 1.6516040394206828,
+        "website": "instagram.com",
+        "google_maps": "https://www.google.com/maps/place/Delicias+Guyane/data=!4m7!3m6!1s0x8d123bb99698a723:0xb369ff24b4a57956!8m2!3d4.8878076!4d-52.2769256!16s%2Fg%2F11ry0hsy48!19sChIJI6eYlrk7Eo0RVnmltCT_abM?authuser=0&hl=fr&rclk=1"
+      }
+    ],
+    "metadata": {
+      "top_score": 9.075472817101215,
+      "results_count": 3,
+      "status": "success",
+      "source_type": "local",
+      "model": "mistral-large-latest"
+    }
+  }
+}
+{
+  "timestamp": "2026-01-22T19:41:16.586032",
+  "session_id": "unknown",
+  "user_query": "Quels sont les plus belles randonnées et sites a absolument visiter ?",
+  "search": {
+    "results_count": 3,
+    "top_result": "07-culture_Caracteristiques_Culturel",
+    "top_score": 13.36414792155108
+  },
+  "response": {
+    "case": 1,
+    "text": "## Caracteristiques Culturelles\n\n### Multilinguisme\n\nLa Guyane est profondément multilingue. La plupart des Guyanais sont polyglottes et passent d'une langue à l'autre selon le contexte:\n\n- **Langue v...",
+    "sources": [
+      {
+        "doc_id": "07-culture_Caracteristiques_Culturel",
+        "score": 13.36414792155108,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "07-culture_Creolophones",
+        "score": 12.636249050839933,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "07-culture_Amerindiens",
+        "score": 11.522575886099172,
+        "website": "",
+        "google_maps": ""
+      }
+    ],
+    "metadata": {
+      "top_score": 13.36414792155108,
+      "results_count": 3,
+      "status": "success",
+      "source_type": "local",
+      "model": "mistral-large-latest"
+    }
+  }
+}
+{
+  "timestamp": "2026-01-22T19:41:36.809314",
+  "session_id": "unknown",
+  "user_query": "Quels sont les vaccins nécessaires pour aller en Guyane ?",
+  "search": {
+    "results_count": 3,
+    "top_result": "07-culture_Creolophones",
+    "top_score": 12.636249050839933
+  },
+  "response": {
+    "case": 1,
+    "text": "Les sources fournies ne contiennent **aucune information** sur les vaccins nécessaires pour se rendre en Guyane française.\n\nPour obtenir des détails précis et officiels sur les vaccinations recommandées ou obligatoires, je vous invite à consulter les sources suivantes :\n1. **Santé Publique France** – Recommandations sanitaires pour la Guyane :\n   [https://www.santepubliquefrance.fr](https://www.santepubliquefrance.fr)\n2. **Institut Pasteur** – Conseils aux voyageurs :\n   [https://www.pasteur.fr/",
+    "sources": [
+      {
+        "doc_id": "07-culture_Creolophones",
+        "score": 12.636249050839933,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "07-culture_Caracteristiques_Culturel",
+        "score": 11.162353101687357,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "07-culture_Hmong",
+        "score": 9.707473020245185,
+        "website": "",
+        "google_maps": ""
+      }
+    ],
+    "metadata": {
+      "top_score": 12.636249050839933,
+      "results_count": 3,
+      "status": "success",
+      "source_type": "local",
+      "model": "mistral-large-latest"
+    }
+  }
+}
+{
+  "timestamp": "2026-01-22T19:41:43.135524",
+  "session_id": "unknown",
+  "user_query": "Quels sont les horaires de la Mairie de Remire Montjoly ?",
+  "search": {
+    "results_count": 3,
+    "top_result": "04-administrations_Mairie_de_Cayenne",
+    "top_score": 17.069750935962873
+  },
+  "response": {
+    "case": 1,
+    "text": "D'après les sources fournies, **aucune information n'est disponible concernant la Mairie de Rémire-Montjoly** (adresse, horaires ou services). Les données se limitent à la **Mairie de Cayenne**, dont voici les détails pour référence :\n\n### Mairie de Cayenne (uniquement)\n1. **Adresse** : Place du Gouverneur Félix Éboué, Cayenne.\n2. **Horaires d'ouverture** :\n   - Lundi à vendredi : 8h–17h.\n   - Samedi : 8h–12h.\n3. **Services proposés** : Délivrance d'extraits de naissance, cartes d'identité, etc.",
+    "sources": [
+      {
+        "doc_id": "04-administrations_Mairie_de_Cayenne",
+        "score": 17.069750935962873,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "06-entreprises_Supermarche_&_courses",
+        "score": 13.567079051165344,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "07-culture_Creolophones",
+        "score": 12.636249050839933,
+        "website": "",
+        "google_maps": ""
+      }
+    ],
+    "metadata": {
+      "top_score": 17.069750935962873,
+      "results_count": 3,
+      "status": "success",
+      "source_type": "local",
+      "model": "mistral-large-latest"
+    }
+  }
+}
+{
+  "timestamp": "2026-01-22T19:41:48.420908",
+  "session_id": "unknown",
+  "user_query": "Quels sont les évènements culturels de cette semaine ?",
+  "search": {
+    "results_count": 3,
+    "top_result": "07-culture_Creolophones",
+    "top_score": 12.636249050839933
+  },
+  "response": {
+    "case": 1,
+    "text": "D'après les sources fournies, **aucune information spécifique sur les événements culturels de cette semaine en Guyane française n'est disponible**. Les documents partagés se concentrent sur des caractéristiques culturelles générales (communautés, langues, groupes ethniques) et non sur des programmations événementielles ponctuelles.\n\n---\n\n### **Pour trouver des événements culturels en Guyane cette semaine**, voici des ressources externes fiables à consulter (non issues des sources fournies) :\n1. ",
+    "sources": [
+      {
+        "doc_id": "07-culture_Creolophones",
+        "score": 12.636249050839933,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "07-culture_Caracteristiques_Culturel",
+        "score": 10.146963706000104,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "07-culture_Hmong",
+        "score": 8.748879763227563,
+        "website": "",
+        "google_maps": ""
+      }
+    ],
+    "metadata": {
+      "top_score": 12.636249050839933,
+      "results_count": 3,
+      "status": "success",
+      "source_type": "local",
+      "model": "mistral-large-latest"
+    }
+  }
+}
+{
+  "timestamp": "2026-01-22T19:42:02.223393",
+  "session_id": "unknown",
+  "user_query": "Ou je peux acheter un fauteuil de bureau",
+  "search": {
+    "results_count": 2,
+    "top_result": "14-restaurants-saint-laurent_Burow_(Le_Bureau)",
+    "top_score": 8.332815629883596
+  },
+  "response": {
+    "case": 3,
+    "text": "Tu peux acheter un fauteuil de bureau dans des magasins de meubles (comme IKEA, But, Conforama), des enseignes spécialisées en matériel de bureau (comme Bureau Vallée, Office Depot), ou en ligne sur des sites comme Amazon, Cdiscount, ou la Fnac.\n\nEt si tu cherchais plutôt des conseils pour aménager un bureau en Guyane ? 😊",
+    "sources": [],
+    "metadata": {
+      "status": "generaliste",
+      "source_type": "llm_only",
+      "model": "mistral-large-latest"
+    }
+  }
+}
+{
+  "timestamp": "2026-01-22T19:42:04.951686",
+  "session_id": "unknown",
+  "user_query": "Quel est le status de la Guyane ?",
+  "search": {
+    "results_count": 3,
+    "top_result": "15-restaurants-macouria_Madame_Est_Servie_Guyane",
+    "top_score": 8.078722085780992
+  },
+  "response": {
+    "case": 1,
+    "text": "Les sources fournies ne contiennent **aucune information** sur le statut politique, administratif ou juridique de la Guyane française. Elles se limitent à des données sur des restaurants et services de livraison en Guyane.\n\nPour répondre à votre question de manière **exhaustive et précise** selon les bonnes pratiques demandées, voici les informations **génériques** sur le statut de la Guyane, bien que non présentes dans les sources actuelles (je les inclus pour utilité, mais elles ne proviennent",
+    "sources": [
+      {
+        "doc_id": "15-restaurants-macouria_Madame_Est_Servie_Guyane",
+        "score": 8.078722085780992,
+        "website": "madameestservieguyane.com",
+        "google_maps": "https://www.google.com/maps/place/Madame+Est+Servie+Guyane/data=!4m7!3m6!1s0x8d121710e8a39c37:0x496d1fbc6802c115!8m2!3d4.9238363!4d-52.4164938!16s%2Fg%2F11tww5kprl!19sChIJN5yj6BAXEo0RFcECaLwfbUk?authuser=0&hl=fr&rclk=1"
+      },
+      {
+        "doc_id": "17-restaurants-roura_Ma_Cuisine",
+        "score": 5.999851087808252,
+        "website": "",
+        "google_maps": "https://www.google.com/maps/place/Ma+Cuisine/data=!4m7!3m6!1s0x8d126b3b3f7fe17f:0x87cf681b5abeb951!8m2!3d4.7590362!4d-52.42668!16s%2Fg%2F11fszpjrg2!19sChIJf-F_PztrEo0RUbm-Whtoz4c?authuser=0&hl=fr&rclk=1"
+      },
+      {
+        "doc_id": "12-restaurants-matoury_Chez_Diane",
+        "score": 5.909573390647216,
+        "website": "",
+        "google_maps": "https://www.google.com/maps/place/Chez+Diane/data=!4m7!3m6!1s0x8d123ddc9344e8c1:0x3c76f8be56956ee!8m2!3d4.8845786!4d-52.3360089!16s%2Fg%2F11g6bj59gf!19sChIJwehEk9w9Eo0R7lZp5YtvxwM?authuser=0&hl=fr&rclk=1"
+      }
+    ],
+    "metadata": {
+      "top_score": 8.078722085780992,
+      "results_count": 3,
+      "status": "success",
+      "source_type": "local",
+      "model": "mistral-large-latest"
+    }
+  }
+}
+{
+  "timestamp": "2026-01-22T19:42:18.620158",
+  "session_id": "unknown",
+  "user_query": "Quelles langues parle t'on en Guyane ?",
+  "search": {
+    "results_count": 3,
+    "top_result": "07-culture_Caracteristiques_Culturel",
+    "top_score": 10.140227361802435
+  },
+  "response": {
+    "case": 1,
+    "text": "## Caracteristiques Culturelles\n\n### Multilinguisme\n\nLa Guyane est profondément multilingue. La plupart des Guyanais sont polyglottes et passent d'une langue à l'autre selon le contexte:\n\n- **Langue v...",
+    "sources": [
+      {
+        "doc_id": "07-culture_Caracteristiques_Culturel",
+        "score": 10.140227361802435,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "07-culture_Amerindiens",
+        "score": 5.9540976295373005,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "13-restaurants-remire_montjoly_Delicias_Guyane",
+        "score": 1.6516040394206828,
+        "website": "instagram.com",
+        "google_maps": "https://www.google.com/maps/place/Delicias+Guyane/data=!4m7!3m6!1s0x8d123bb99698a723:0xb369ff24b4a57956!8m2!3d4.8878076!4d-52.2769256!16s%2Fg%2F11ry0hsy48!19sChIJI6eYlrk7Eo0RVnmltCT_abM?authuser=0&hl=fr&rclk=1"
+      }
+    ],
+    "metadata": {
+      "top_score": 10.140227361802435,
+      "results_count": 3,
+      "status": "success",
+      "source_type": "local",
+      "model": "mistral-large-latest"
+    }
+  }
+}
+{
+  "timestamp": "2026-01-22T19:42:38.857619",
+  "session_id": "unknown",
+  "user_query": "C'est quoi un Tololo ?",
+  "search": {
+    "results_count": 3,
+    "top_result": "15-restaurants-macouria_Madame_Est_Servie_Guyane",
+    "top_score": 6.477871214820914
+  },
+  "response": {
+    "case": 3,
+    "text": "Un \"Tololo\" est un terme familier utilisé dans certains pays d'Amérique latine, notamment au Chili, pour désigner un homme qui a une relation amoureuse avec une femme beaucoup plus jeune que lui, souvent de manière socialement mal perçue.\n\nEt toi, connais-tu des expressions ou mots typiques de la Guyane ? 😊",
+    "sources": [],
+    "metadata": {
+      "status": "generaliste",
+      "source_type": "llm_only",
+      "model": "mistral-large-latest"
+    }
+  }
+}
+{
+  "timestamp": "2026-01-22T19:42:41.342736",
+  "session_id": "unknown",
+  "user_query": "Pourquoi on envoie des fusées en Guyane ?",
+  "search": {
+    "results_count": 3,
+    "top_result": "13-restaurants-kourou_Hôtel_Restaurant_des_Roch",
+    "top_score": 6.2005111354573375
+  },
+  "response": {
+    "case": 1,
+    "text": "#### Hôtel Restaurant des Roches\n- **Type :** Autre\n- **Adresse :** 97310 Av. des Roches, Kourou 97310, Guyane française\n- **Téléphone :** +594 594 32 00 66\n- **Note :** 3,8 (283 avis)\n- **Site web :*...",
+    "sources": [
+      {
+        "doc_id": "13-restaurants-kourou_Hôtel_Restaurant_des_Roch",
+        "score": 6.2005111354573375,
+        "website": "hotel-des-roches.fr",
+        "google_maps": "https://www.google.com/maps/place/H%C3%B4tel+Restaurant+des+Roches/data=!4m10!3m9!1s0x8d11feaff5750c2d:0xa8f6565d2fda6d43!5m2!4m1!1i2!8m2!3d5.1598894!4d-52.6272561!16s%2Fg%2F1ts3gnr2!19sChIJLQx19a_-EY0RQ23aL11W9qg?authuser=0&hl=fr&rclk=1"
+      },
+      {
+        "doc_id": "13-restaurants-kourou_Pointe_des_Roches",
+        "score": 6.090243959783405,
+        "website": "",
+        "google_maps": "https://www.google.com/maps/place/Pointe+des+Roches/data=!4m7!3m6!1s0x8d11ffda4e208efd:0xdc741e8db7bd624!8m2!3d5.1581849!4d-52.6263725!16s%2Fg%2F11h3n3b69n!19sChIJ_Y4gTtr_EY0RJNZ72-hBxw0?authuser=0&hl=fr&rclk=1"
+      },
+      {
+        "doc_id": "13-restaurants-kourou_Bar_des_sports",
+        "score": 5.953494073409136,
+        "website": "",
+        "google_maps": "https://www.google.com/maps/place/Bar+des+sports/data=!4m7!3m6!1s0x8d11fe9e697338ff:0x2c19b2d813ca8c30!8m2!3d5.1654375!4d-52.6414375!16s%2Fg%2F11cs3ztzx3!19sChIJ_zhzaZ7-EY0RMIzKE9iyGSw?authuser=0&hl=fr&rclk=1"
+      }
+    ],
+    "metadata": {
+      "top_score": 6.2005111354573375,
+      "results_count": 3,
+      "status": "success",
+      "source_type": "local",
+      "model": "mistral-large-latest"
+    }
+  }
+}
+{
+  "timestamp": "2026-01-22T19:44:34.502432",
+  "session_id": "unknown",
+  "user_query": "Que faire en 5 jours en Guyane ?",
+  "search": {
+    "results_count": 3,
+    "top_result": "04-administrations_Mairie_de_Cayenne",
+    "top_score": 5.987116572399201
+  },
+  "response": {
+    "case": 1,
+    "text": "## Mairie de Cayenne\n\n### Accueil général\n- **Adresse :** Place du Gouverneur Félix Éboué, Cayenne\n- **Horaires :** Lun–Ven 8h–17h, Sam 8h–12h\n- **Services :** Extraits de naissance, cartes d'identité...",
+    "sources": [
+      {
+        "doc_id": "04-administrations_Mairie_de_Cayenne",
+        "score": 5.987116572399201,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "07-culture_Amerindiens",
+        "score": 3.1703943092498177,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "13-restaurants-remire_montjoly_Delicias_Guyane",
+        "score": 1.6516040394206828,
+        "website": "instagram.com",
+        "google_maps": "https://www.google.com/maps/place/Delicias+Guyane/data=!4m7!3m6!1s0x8d123bb99698a723:0xb369ff24b4a57956!8m2!3d4.8878076!4d-52.2769256!16s%2Fg%2F11ry0hsy48!19sChIJI6eYlrk7Eo0RVnmltCT_abM?authuser=0&hl=fr&rclk=1"
+      }
+    ],
+    "metadata": {
+      "top_score": 5.987116572399201,
+      "results_count": 3,
+      "status": "success",
+      "source_type": "local",
+      "model": "mistral-large-latest"
+    }
+  }
+}
+{
+  "timestamp": "2026-01-22T19:44:54.782034",
+  "session_id": "unknown",
+  "user_query": "Où dormir pour mon séjour en Guyane ?",
+  "search": {
+    "results_count": 3,
+    "top_result": "04-administrations_Prefecture_de_la_Guyane",
+    "top_score": 9.075472817101215
+  },
+  "response": {
+    "case": 1,
+    "text": "Voici les informations précises concernant l'hébergement pour votre séjour en Guyane, basées sur les sources fournies :\n\n1. **Hôtel Le Bresilien** (Centre-ville de Cayenne)\n   - **Type d'établissement** : Hôtel 3 étoiles\n   - **Localisation exacte** : Rue Lallouette, Cayenne (centre-ville, proche des commodités et des administrations).\n   - **Gamme de prix** : Entre 80 € et 120 € par nuit (tarif moyen pour un budget modéré).\n   - **Lien utile** : Pour plus d'informations ou réservations, consult",
+    "sources": [
+      {
+        "doc_id": "04-administrations_Prefecture_de_la_Guyane",
+        "score": 9.075472817101215,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "01-hebergements_Cayenne_-_Centre-ville",
+        "score": 5.869883537320595,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "13-restaurants-remire_montjoly_Delicias_Guyane",
+        "score": 1.6516040394206828,
+        "website": "instagram.com",
+        "google_maps": "https://www.google.com/maps/place/Delicias+Guyane/data=!4m7!3m6!1s0x8d123bb99698a723:0xb369ff24b4a57956!8m2!3d4.8878076!4d-52.2769256!16s%2Fg%2F11ry0hsy48!19sChIJI6eYlrk7Eo0RVnmltCT_abM?authuser=0&hl=fr&rclk=1"
+      }
+    ],
+    "metadata": {
+      "top_score": 9.075472817101215,
+      "results_count": 3,
+      "status": "success",
+      "source_type": "local",
+      "model": "mistral-large-latest"
+    }
+  }
+}
+{
+  "timestamp": "2026-01-22T19:45:00.708824",
+  "session_id": "unknown",
+  "user_query": "Quels sont les plus belles randonnées et sites a absolument visiter ?",
+  "search": {
+    "results_count": 3,
+    "top_result": "07-culture_Caracteristiques_Culturel",
+    "top_score": 13.36414792155108
+  },
+  "response": {
+    "case": 1,
+    "text": "## Caracteristiques Culturelles\n\n### Multilinguisme\n\nLa Guyane est profondément multilingue. La plupart des Guyanais sont polyglottes et passent d'une langue à l'autre selon le contexte:\n\n- **Langue v...",
+    "sources": [
+      {
+        "doc_id": "07-culture_Caracteristiques_Culturel",
+        "score": 13.36414792155108,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "07-culture_Creolophones",
+        "score": 12.636249050839933,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "07-culture_Amerindiens",
+        "score": 11.522575886099172,
+        "website": "",
+        "google_maps": ""
+      }
+    ],
+    "metadata": {
+      "top_score": 13.36414792155108,
+      "results_count": 3,
+      "status": "success",
+      "source_type": "local",
+      "model": "mistral-large-latest"
+    }
+  }
+}
+{
+  "timestamp": "2026-01-22T19:45:20.962128",
+  "session_id": "unknown",
+  "user_query": "Quels sont les vaccins nécessaires pour aller en Guyane ?",
+  "search": {
+    "results_count": 3,
+    "top_result": "07-culture_Creolophones",
+    "top_score": 12.636249050839933
+  },
+  "response": {
+    "case": 1,
+    "text": "Les sources fournies ne contiennent **aucune information** sur les vaccins nécessaires pour se rendre en Guyane française.\n\nPour obtenir des réponses précises sur les vaccins obligatoires ou recommandés, je te conseille de consulter les sources officielles suivantes :\n1. **Santé Publique France – Recommandations pour la Guyane** :\n   [https://www.santepubliquefrance.fr/](https://www.santepubliquefrance.fr/)\n   (Recherche : \"vaccins Guyane\" ou \"conseils santé Guyane\").\n\n2. **Institut Pasteur – Vo",
+    "sources": [
+      {
+        "doc_id": "07-culture_Creolophones",
+        "score": 12.636249050839933,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "07-culture_Caracteristiques_Culturel",
+        "score": 11.162353101687357,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "07-culture_Hmong",
+        "score": 9.707473020245185,
+        "website": "",
+        "google_maps": ""
+      }
+    ],
+    "metadata": {
+      "top_score": 12.636249050839933,
+      "results_count": 3,
+      "status": "success",
+      "source_type": "local",
+      "model": "mistral-large-latest"
+    }
+  }
+}
+{
+  "timestamp": "2026-01-22T19:45:29.301633",
+  "session_id": "unknown",
+  "user_query": "Quels sont les horaires de la Mairie de Remire Montjoly ?",
+  "search": {
+    "results_count": 3,
+    "top_result": "04-administrations_Mairie_de_Cayenne",
+    "top_score": 17.069750935962873
+  },
+  "response": {
+    "case": 1,
+    "text": "D'après les sources fournies, **aucune information spécifique sur la Mairie de Rémire-Montjoly** n'est disponible.\n\nLes données concernent uniquement :\n1. **La Mairie de Cayenne** (Source 1 - 04-administrations_Mairie_de_Cayenne) :\n   - **Adresse** : Place du Gouverneur Félix Éboué, Cayenne.\n   - **Horaires** : Lundi–Vendredi de 8h à 17h, Samedi de 8h à 12h.\n   - **Services** : Extraits de naissance, cartes d’identité, etc.\n\nPour obtenir les horaires de la Mairie de Rémire-Montjoly, je vous reco",
+    "sources": [
+      {
+        "doc_id": "04-administrations_Mairie_de_Cayenne",
+        "score": 17.069750935962873,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "06-entreprises_Supermarche_&_courses",
+        "score": 13.567079051165344,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "07-culture_Creolophones",
+        "score": 12.636249050839933,
+        "website": "",
+        "google_maps": ""
+      }
+    ],
+    "metadata": {
+      "top_score": 17.069750935962873,
+      "results_count": 3,
+      "status": "success",
+      "source_type": "local",
+      "model": "mistral-large-latest"
+    }
+  }
+}
+{
+  "timestamp": "2026-01-22T19:45:34.004597",
+  "session_id": "unknown",
+  "user_query": "Quels sont les évènements culturels de cette semaine ?",
+  "search": {
+    "results_count": 3,
+    "top_result": "07-culture_Creolophones",
+    "top_score": 12.636249050839933
+  },
+  "response": {
+    "case": 1,
+    "text": "## Creolophones\n\nLes créolophones forment une large communauté incluant:\n- Guyanais créolophones (100 000)\n- Martiniquais, Guadeloupéens, Réunionnais (21 000)\n- Haïtiens (24 000+)\n- Créolophones du Su...",
+    "sources": [
+      {
+        "doc_id": "07-culture_Creolophones",
+        "score": 12.636249050839933,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "07-culture_Caracteristiques_Culturel",
+        "score": 10.146963706000104,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "07-culture_Hmong",
+        "score": 8.748879763227563,
+        "website": "",
+        "google_maps": ""
+      }
+    ],
+    "metadata": {
+      "top_score": 12.636249050839933,
+      "results_count": 3,
+      "status": "success",
+      "source_type": "local",
+      "model": "mistral-large-latest"
+    }
+  }
+}
+{
+  "timestamp": "2026-01-22T19:45:54.258238",
+  "session_id": "unknown",
+  "user_query": "Ou je peux acheter un fauteuil de bureau",
+  "search": {
+    "results_count": 2,
+    "top_result": "14-restaurants-saint-laurent_Burow_(Le_Bureau)",
+    "top_score": 8.332815629883596
+  },
+  "response": {
+    "case": 3,
+    "text": "Tu peux acheter un fauteuil de bureau dans plusieurs types de magasins :\n- **Grandes surfaces** (Décathlon, Ikea, But, Conforama, etc.)\n- **Magasins spécialisés** (Bureau Vallée, Office Depot, etc.)\n- **En ligne** (Amazon, Cdiscount, Fnac, etc.)\n- **Magasins de seconde main** (Leboncoin, Emmaüs, etc.)\n\nTu cherches un modèle en particulier ?\n\nEt si on parlait de la Guyane ? Connais-tu les meilleurs spots pour observer la faune en forêt amazonienne ?",
+    "sources": [],
+    "metadata": {
+      "status": "generaliste",
+      "source_type": "llm_only",
+      "model": "mistral-large-latest"
+    }
+  }
+}
+{
+  "timestamp": "2026-01-22T19:45:58.018395",
+  "session_id": "unknown",
+  "user_query": "Quel est le status de la Guyane ?",
+  "search": {
+    "results_count": 3,
+    "top_result": "15-restaurants-macouria_Madame_Est_Servie_Guyane",
+    "top_score": 8.078722085780992
+  },
+  "response": {
+    "case": 1,
+    "text": "#### Madame Est Servie Guyane\n- **Type :** Livraison de repas à domicile\n- **Adresse :** 2 Rue de la Comté, Macouria 97355, Guyane française\n- **Téléphone :** +594 694 15 80 03\n- **Note :** 4 (1 avis)...",
+    "sources": [
+      {
+        "doc_id": "15-restaurants-macouria_Madame_Est_Servie_Guyane",
+        "score": 8.078722085780992,
+        "website": "madameestservieguyane.com",
+        "google_maps": "https://www.google.com/maps/place/Madame+Est+Servie+Guyane/data=!4m7!3m6!1s0x8d121710e8a39c37:0x496d1fbc6802c115!8m2!3d4.9238363!4d-52.4164938!16s%2Fg%2F11tww5kprl!19sChIJN5yj6BAXEo0RFcECaLwfbUk?authuser=0&hl=fr&rclk=1"
+      },
+      {
+        "doc_id": "17-restaurants-roura_Ma_Cuisine",
+        "score": 5.999851087808252,
+        "website": "",
+        "google_maps": "https://www.google.com/maps/place/Ma+Cuisine/data=!4m7!3m6!1s0x8d126b3b3f7fe17f:0x87cf681b5abeb951!8m2!3d4.7590362!4d-52.42668!16s%2Fg%2F11fszpjrg2!19sChIJf-F_PztrEo0RUbm-Whtoz4c?authuser=0&hl=fr&rclk=1"
+      },
+      {
+        "doc_id": "12-restaurants-matoury_Chez_Diane",
+        "score": 5.909573390647216,
+        "website": "",
+        "google_maps": "https://www.google.com/maps/place/Chez+Diane/data=!4m7!3m6!1s0x8d123ddc9344e8c1:0x3c76f8be56956ee!8m2!3d4.8845786!4d-52.3360089!16s%2Fg%2F11g6bj59gf!19sChIJwehEk9w9Eo0R7lZp5YtvxwM?authuser=0&hl=fr&rclk=1"
+      }
+    ],
+    "metadata": {
+      "top_score": 8.078722085780992,
+      "results_count": 3,
+      "status": "success",
+      "source_type": "local",
+      "model": "mistral-large-latest"
+    }
+  }
+}
+{
+  "timestamp": "2026-01-22T20:03:49.670853",
+  "session_id": "unknown",
+  "user_query": "Je cherche un restaurant à Kourou",
+  "search": {
+    "results_count": 3,
+    "top_result": "13-restaurants-kourou_Hôtel_Restaurant_La_Marin",
+    "top_score": 5.912097482393035
+  },
+  "response": {
+    "case": 1,
+    "text": "Voici les restaurants disponibles à Kourou selon les sources fournies :\n\n1. **Hôtel Restaurant La Marina Kourou**\n   - **Type** : Restaurant (associé à un hôtel)\n   - **Adresse** : Zone Pariacabo, Montagne Lombard, Kourou, 97310, Guyane française\n   - **Téléphone** : +594 594 32 29 05\n   - **Note** : 3,4/5 (basée sur 399 avis)\n   - **Site web** : [hotel-restaurant-lamarina.com](http://hotel-restaurant-lamarina.com)\n   - **Lien Google Maps** : [Voir la localisation](https://www.google.com/maps/pl",
+    "sources": [
+      {
+        "doc_id": "01-hebergements_Kourou_-_Zone_touristique",
+        "score": 5.894772926453047,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "13-restaurants-kourou_Hôtel_Restaurant_La_Marin",
+        "score": 5.912097482393035,
+        "website": "hotel-restaurant-lamarina.com",
+        "google_maps": "https://www.google.com/maps/place/H%C3%B4tel+Restaurant+La+Marina+Kourou/data=!4m10!3m9!1s0x8d11fe43666384e5:0x63638ed994df99ad!5m2!4m1!1i2!8m2!3d5.150584!4d-52.673201!16s%2Fg%2F11c5g7kzz4!19sChIJ5YRjZkP-EY0RrZnflNmOY2M?authuser=0&hl=fr&rclk=1"
+      },
+      {
+        "doc_id": "13-restaurants-kourou_CrocoBeach",
+        "score": 5.389177706878965,
+        "website": "",
+        "google_maps": "https://www.google.com/maps/place/CrocoBeach/data=!4m7!3m6!1s0x8d11ff0048d8e5b5:0xd8b888e23b8f255f!8m2!3d5.1627151!4d-52.6342247!16s%2Fg%2F11ykmpns4c!19sChIJteXYSAD_EY0RXyWPO-KIuNg?authuser=0&hl=fr&rclk=1"
+      }
+    ],
+    "metadata": {
+      "top_score": 5.912097482393035,
+      "results_count": 3,
+      "status": "success",
+      "source_type": "local",
+      "model": "mistral-large-latest"
+    }
+  }
+}
+{
+  "timestamp": "2026-01-22T20:03:59.324428",
+  "session_id": "unknown",
+  "user_query": "Que faire en 5 jours en Guyane ?",
+  "search": {
+    "results_count": 3,
+    "top_result": "04-administrations_Mairie_de_Cayenne",
+    "top_score": 5.987116572399201
+  },
+  "response": {
+    "case": 1,
+    "text": "## Mairie de Cayenne\n\n### Accueil général\n- **Adresse :** Place du Gouverneur Félix Éboué, Cayenne\n- **Horaires :** Lun–Ven 8h–17h, Sam 8h–12h\n- **Services :** Extraits de naissance, cartes d'identité...",
+    "sources": [
+      {
+        "doc_id": "04-administrations_Mairie_de_Cayenne",
+        "score": 5.987116572399201,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "07-culture_Amerindiens",
+        "score": 3.1703943092498177,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "13-restaurants-remire_montjoly_Delicias_Guyane",
+        "score": 1.6516040394206828,
+        "website": "instagram.com",
+        "google_maps": "https://www.google.com/maps/place/Delicias+Guyane/data=!4m7!3m6!1s0x8d123bb99698a723:0xb369ff24b4a57956!8m2!3d4.8878076!4d-52.2769256!16s%2Fg%2F11ry0hsy48!19sChIJI6eYlrk7Eo0RVnmltCT_abM?authuser=0&hl=fr&rclk=1"
+      }
+    ],
+    "metadata": {
+      "top_score": 5.987116572399201,
+      "results_count": 3,
+      "status": "success",
+      "source_type": "local",
+      "model": "mistral-large-latest"
+    }
+  }
+}
+{
+  "timestamp": "2026-01-22T20:04:19.602108",
+  "session_id": "unknown",
+  "user_query": "Où dormir pour mon séjour en Guyane ?",
+  "search": {
+    "results_count": 3,
+    "top_result": "04-administrations_Prefecture_de_la_Guyane",
+    "top_score": 9.075472817101215
+  },
+  "response": {
+    "case": 1,
+    "text": "Voici les options d'hébergement disponibles pour votre séjour en Guyane, basées sur les sources fournies :\n\n1. **Hôtel Le Bresilien** (Cayenne - Centre-ville)\n   - **Type** : Hôtel 3 étoiles.\n   - **Localisation** : Rue Lallouette, Cayenne (centre-ville).\n   - **Prix** : Entre 80 € et 120 € par nuit (tarif moyen pour un budget standard).\n   - **Site web** : [Lien vers le site de l'hôtel](https://www.hot...) (le lien complet n'est pas disponible dans la source).\n\nSi vous souhaitez explorer d'autr",
+    "sources": [
+      {
+        "doc_id": "04-administrations_Prefecture_de_la_Guyane",
+        "score": 9.075472817101215,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "01-hebergements_Cayenne_-_Centre-ville",
+        "score": 5.869883537320595,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "13-restaurants-remire_montjoly_Delicias_Guyane",
+        "score": 1.6516040394206828,
+        "website": "instagram.com",
+        "google_maps": "https://www.google.com/maps/place/Delicias+Guyane/data=!4m7!3m6!1s0x8d123bb99698a723:0xb369ff24b4a57956!8m2!3d4.8878076!4d-52.2769256!16s%2Fg%2F11ry0hsy48!19sChIJI6eYlrk7Eo0RVnmltCT_abM?authuser=0&hl=fr&rclk=1"
+      }
+    ],
+    "metadata": {
+      "top_score": 9.075472817101215,
+      "results_count": 3,
+      "status": "success",
+      "source_type": "local",
+      "model": "mistral-large-latest"
+    }
+  }
+}
+{
+  "timestamp": "2026-01-22T20:04:24.437649",
+  "session_id": "unknown",
+  "user_query": "Quels sont les plus belles randonnées et sites a absolument visiter ?",
+  "search": {
+    "results_count": 3,
+    "top_result": "07-culture_Caracteristiques_Culturel",
+    "top_score": 13.36414792155108
+  },
+  "response": {
+    "case": 1,
+    "text": "D'après les sources fournies, aucune ne contient d'informations spécifiques sur les randonnées ou les sites à visiter en Guyane française. Les documents disponibles se concentrent sur les caractéristiques culturelles, linguistiques et démographiques (communautés créolophones, amérindiennes, etc.), mais ne mentionnent pas de lieux touristiques, de sentiers de randonnée ou d'attractions naturelles.\n\nPour obtenir des informations précises sur les **plus belles randonnées et sites à visiter en Guyan",
+    "sources": [
+      {
+        "doc_id": "07-culture_Caracteristiques_Culturel",
+        "score": 13.36414792155108,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "07-culture_Creolophones",
+        "score": 12.636249050839933,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "07-culture_Amerindiens",
+        "score": 11.522575886099172,
+        "website": "",
+        "google_maps": ""
+      }
+    ],
+    "metadata": {
+      "top_score": 13.36414792155108,
+      "results_count": 3,
+      "status": "success",
+      "source_type": "local",
+      "model": "mistral-large-latest"
+    }
+  }
+}
+{
+  "timestamp": "2026-01-22T20:04:36.481333",
+  "session_id": "unknown",
+  "user_query": "Quels sont les vaccins nécessaires pour aller en Guyane ?",
+  "search": {
+    "results_count": 3,
+    "top_result": "07-culture_Creolophones",
+    "top_score": 12.636249050839933
+  },
+  "response": {
+    "case": 1,
+    "text": "Les sources fournies ne contiennent **aucune information** sur les vaccins nécessaires pour se rendre en Guyane française.\n\nPour obtenir des détails précis et officiels sur les vaccinations obligatoires ou recommandées (comme la fièvre jaune, l'hépatite A/B, la typhoïde, etc.), je vous invite à consulter les ressources suivantes :\n1. **Santé Publique France** – Recommandations sanitaires pour la Guyane :\n   → [https://www.santepubliquefrance.fr](https://www.santepubliquefrance.fr)\n2. **Institut ",
+    "sources": [
+      {
+        "doc_id": "07-culture_Creolophones",
+        "score": 12.636249050839933,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "07-culture_Caracteristiques_Culturel",
+        "score": 11.162353101687357,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "07-culture_Hmong",
+        "score": 9.707473020245185,
+        "website": "",
+        "google_maps": ""
+      }
+    ],
+    "metadata": {
+      "top_score": 12.636249050839933,
+      "results_count": 3,
+      "status": "success",
+      "source_type": "local",
+      "model": "mistral-large-latest"
+    }
+  }
+}
+{
+  "timestamp": "2026-01-22T20:04:43.412710",
+  "session_id": "unknown",
+  "user_query": "Quels sont les horaires de la Mairie de Remire Montjoly ?",
+  "search": {
+    "results_count": 3,
+    "top_result": "04-administrations_Mairie_de_Cayenne",
+    "top_score": 17.069750935962873
+  },
+  "response": {
+    "case": 1,
+    "text": "D'après les sources fournies, **aucune information spécifique sur la Mairie de Rémire-Montjoly** n'est disponible.\n\nVoici les seules données relatives à une mairie dans les sources :\n1. **Mairie de Cayenne** (uniquement) :\n   - **Adresse** : Place du Gouverneur Félix Éboué, Cayenne.\n   - **Horaires** :\n     - Lundi à vendredi : 8h–17h.\n     - Samedi : 8h–12h.\n   - **Services** : Délivrance d’extraits de naissance, cartes d’identité, etc.\n   *(Source : [04-administrations_Mairie_de_Cayenne])*.\n\nP",
+    "sources": [
+      {
+        "doc_id": "04-administrations_Mairie_de_Cayenne",
+        "score": 17.069750935962873,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "06-entreprises_Supermarche_&_courses",
+        "score": 13.567079051165344,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "07-culture_Creolophones",
+        "score": 12.636249050839933,
+        "website": "",
+        "google_maps": ""
+      }
+    ],
+    "metadata": {
+      "top_score": 17.069750935962873,
+      "results_count": 3,
+      "status": "success",
+      "source_type": "local",
+      "model": "mistral-large-latest"
+    }
+  }
+}
+{
+  "timestamp": "2026-01-22T20:04:49.112092",
+  "session_id": "unknown",
+  "user_query": "Quels sont les évènements culturels de cette semaine ?",
+  "search": {
+    "results_count": 3,
+    "top_result": "07-culture_Creolophones",
+    "top_score": 12.636249050839933
+  },
+  "response": {
+    "case": 1,
+    "text": "## Creolophones\n\nLes créolophones forment une large communauté incluant:\n- Guyanais créolophones (100 000)\n- Martiniquais, Guadeloupéens, Réunionnais (21 000)\n- Haïtiens (24 000+)\n- Créolophones du Su...",
+    "sources": [
+      {
+        "doc_id": "07-culture_Creolophones",
+        "score": 12.636249050839933,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "07-culture_Caracteristiques_Culturel",
+        "score": 10.146963706000104,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "07-culture_Hmong",
+        "score": 8.748879763227563,
+        "website": "",
+        "google_maps": ""
+      }
+    ],
+    "metadata": {
+      "top_score": 12.636249050839933,
+      "results_count": 3,
+      "status": "success",
+      "source_type": "local",
+      "model": "mistral-large-latest"
+    }
+  }
+}
+{
+  "timestamp": "2026-01-22T20:05:09.338062",
+  "session_id": "unknown",
+  "user_query": "Ou je peux acheter un fauteuil de bureau",
+  "search": {
+    "results_count": 2,
+    "top_result": "14-restaurants-saint-laurent_Burow_(Le_Bureau)",
+    "top_score": 8.332815629883596
+  },
+  "response": {
+    "case": 3,
+    "text": "Tu peux acheter un fauteuil de bureau dans des magasins de meubles (comme IKEA, Conforama), des enseignes spécialisées en matériel de bureau (Bureau Vallée, Office Depot), ou en ligne sur des sites comme Amazon, Cdiscount ou La Redoute.\n\nEt si tu veux des conseils pour aménager un espace de travail en Guyane, as-tu des contraintes spécifiques (climat, espace, etc.) ?",
+    "sources": [],
+    "metadata": {
+      "status": "generaliste",
+      "source_type": "llm_only",
+      "model": "mistral-large-latest"
+    }
+  }
+}
+{
+  "timestamp": "2026-01-22T20:05:12.244963",
+  "session_id": "unknown",
+  "user_query": "Quel est le status de la Guyane ?",
+  "search": {
+    "results_count": 3,
+    "top_result": "15-restaurants-macouria_Madame_Est_Servie_Guyane",
+    "top_score": 8.078722085780992
+  },
+  "response": {
+    "case": 1,
+    "text": "Les sources fournies ne contiennent pas d'informations sur le **statut de la Guyane française**. Ces documents se limitent à des détails sur des restaurants et services de livraison en Guyane.\n\nPour répondre précisément à votre question, voici les informations **générales et officielles** sur le statut de la Guyane, bien que non issues des sources actuelles (à titre indicatif) :\n1. **Statut administratif** : La Guyane est une **collectivité territoriale unique** (depuis 2015), régie par l’**arti",
+    "sources": [
+      {
+        "doc_id": "15-restaurants-macouria_Madame_Est_Servie_Guyane",
+        "score": 8.078722085780992,
+        "website": "madameestservieguyane.com",
+        "google_maps": "https://www.google.com/maps/place/Madame+Est+Servie+Guyane/data=!4m7!3m6!1s0x8d121710e8a39c37:0x496d1fbc6802c115!8m2!3d4.9238363!4d-52.4164938!16s%2Fg%2F11tww5kprl!19sChIJN5yj6BAXEo0RFcECaLwfbUk?authuser=0&hl=fr&rclk=1"
+      },
+      {
+        "doc_id": "17-restaurants-roura_Ma_Cuisine",
+        "score": 5.999851087808252,
+        "website": "",
+        "google_maps": "https://www.google.com/maps/place/Ma+Cuisine/data=!4m7!3m6!1s0x8d126b3b3f7fe17f:0x87cf681b5abeb951!8m2!3d4.7590362!4d-52.42668!16s%2Fg%2F11fszpjrg2!19sChIJf-F_PztrEo0RUbm-Whtoz4c?authuser=0&hl=fr&rclk=1"
+      },
+      {
+        "doc_id": "12-restaurants-matoury_Chez_Diane",
+        "score": 5.909573390647216,
+        "website": "",
+        "google_maps": "https://www.google.com/maps/place/Chez+Diane/data=!4m7!3m6!1s0x8d123ddc9344e8c1:0x3c76f8be56956ee!8m2!3d4.8845786!4d-52.3360089!16s%2Fg%2F11g6bj59gf!19sChIJwehEk9w9Eo0R7lZp5YtvxwM?authuser=0&hl=fr&rclk=1"
+      }
+    ],
+    "metadata": {
+      "top_score": 8.078722085780992,
+      "results_count": 3,
+      "status": "success",
+      "source_type": "local",
+      "model": "mistral-large-latest"
+    }
+  }
+}
+{
+  "timestamp": "2026-01-22T20:05:20.216175",
+  "session_id": "unknown",
+  "user_query": "Quelles langues parle t'on en Guyane ?",
+  "search": {
+    "results_count": 3,
+    "top_result": "07-culture_Caracteristiques_Culturel",
+    "top_score": 10.140227361802435
+  },
+  "response": {
+    "case": 1,
+    "text": "## Caracteristiques Culturelles\n\n### Multilinguisme\n\nLa Guyane est profondément multilingue. La plupart des Guyanais sont polyglottes et passent d'une langue à l'autre selon le contexte:\n\n- **Langue v...",
+    "sources": [
+      {
+        "doc_id": "07-culture_Caracteristiques_Culturel",
+        "score": 10.140227361802435,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "07-culture_Amerindiens",
+        "score": 5.9540976295373005,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "13-restaurants-remire_montjoly_Delicias_Guyane",
+        "score": 1.6516040394206828,
+        "website": "instagram.com",
+        "google_maps": "https://www.google.com/maps/place/Delicias+Guyane/data=!4m7!3m6!1s0x8d123bb99698a723:0xb369ff24b4a57956!8m2!3d4.8878076!4d-52.2769256!16s%2Fg%2F11ry0hsy48!19sChIJI6eYlrk7Eo0RVnmltCT_abM?authuser=0&hl=fr&rclk=1"
+      }
+    ],
+    "metadata": {
+      "top_score": 10.140227361802435,
+      "results_count": 3,
+      "status": "success",
+      "source_type": "local",
+      "model": "mistral-large-latest"
+    }
+  }
+}
+{
+  "timestamp": "2026-01-22T20:05:40.458042",
+  "session_id": "unknown",
+  "user_query": "C'est quoi un Tololo ?",
+  "search": {
+    "results_count": 3,
+    "top_result": "15-restaurants-macouria_Madame_Est_Servie_Guyane",
+    "top_score": 6.477871214820914
+  },
+  "response": {
+    "case": 3,
+    "text": "Un \"Tololo\" est un terme familier en espagnol d'Amérique latine, notamment au Chili, pour désigner un homme naïf, un peu simplet ou facilement dupé. C'est souvent utilisé de manière affectueuse ou moqueuse.\n\nEt si on parlait de la Guyane ? Connais-tu les traditions culinaires créoles de là-bas ?",
+    "sources": [],
+    "metadata": {
+      "status": "generaliste",
+      "source_type": "llm_only",
+      "model": "mistral-large-latest"
+    }
+  }
+}
+{
+  "timestamp": "2026-01-22T20:05:43.323549",
+  "session_id": "unknown",
+  "user_query": "Pourquoi on envoie des fusées en Guyane ?",
+  "search": {
+    "results_count": 3,
+    "top_result": "13-restaurants-kourou_Hôtel_Restaurant_des_Roch",
+    "top_score": 6.2005111354573375
+  },
+  "response": {
+    "case": 1,
+    "text": "#### Hôtel Restaurant des Roches\n- **Type :** Autre\n- **Adresse :** 97310 Av. des Roches, Kourou 97310, Guyane française\n- **Téléphone :** +594 594 32 00 66\n- **Note :** 3,8 (283 avis)\n- **Site web :*...",
+    "sources": [
+      {
+        "doc_id": "13-restaurants-kourou_Hôtel_Restaurant_des_Roch",
+        "score": 6.2005111354573375,
+        "website": "hotel-des-roches.fr",
+        "google_maps": "https://www.google.com/maps/place/H%C3%B4tel+Restaurant+des+Roches/data=!4m10!3m9!1s0x8d11feaff5750c2d:0xa8f6565d2fda6d43!5m2!4m1!1i2!8m2!3d5.1598894!4d-52.6272561!16s%2Fg%2F1ts3gnr2!19sChIJLQx19a_-EY0RQ23aL11W9qg?authuser=0&hl=fr&rclk=1"
+      },
+      {
+        "doc_id": "13-restaurants-kourou_Pointe_des_Roches",
+        "score": 6.090243959783405,
+        "website": "",
+        "google_maps": "https://www.google.com/maps/place/Pointe+des+Roches/data=!4m7!3m6!1s0x8d11ffda4e208efd:0xdc741e8db7bd624!8m2!3d5.1581849!4d-52.6263725!16s%2Fg%2F11h3n3b69n!19sChIJ_Y4gTtr_EY0RJNZ72-hBxw0?authuser=0&hl=fr&rclk=1"
+      },
+      {
+        "doc_id": "13-restaurants-kourou_Bar_des_sports",
+        "score": 5.953494073409136,
+        "website": "",
+        "google_maps": "https://www.google.com/maps/place/Bar+des+sports/data=!4m7!3m6!1s0x8d11fe9e697338ff:0x2c19b2d813ca8c30!8m2!3d5.1654375!4d-52.6414375!16s%2Fg%2F11cs3ztzx3!19sChIJ_zhzaZ7-EY0RMIzKE9iyGSw?authuser=0&hl=fr&rclk=1"
+      }
+    ],
+    "metadata": {
+      "top_score": 6.2005111354573375,
+      "results_count": 3,
+      "status": "success",
+      "source_type": "local",
+      "model": "mistral-large-latest"
+    }
+  }
+}
+{
+  "timestamp": "2026-01-22T20:10:26.423814",
+  "session_id": "session_1769112617273",
+  "user_query": "\"Que faire en 5 jours en Guyane ?\"",
+  "search": {
+    "results_count": 3,
+    "top_result": "07-culture_Caracteristiques_Culturel",
+    "top_score": 7.49048554778399
+  },
+  "response": {
+    "case": 1,
+    "text": "## Caracteristiques Culturelles\n\n### Multilinguisme\n\nLa Guyane est profondément multilingue. La plupart des Guyanais sont polyglottes et passent d'une langue à l'autre selon le contexte:\n\n- **Langue v...",
+    "sources": [
+      {
+        "doc_id": "07-culture_Caracteristiques_Culturel",
+        "score": 7.49048554778399,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "04-administrations_Mairie_de_Cayenne",
+        "score": 5.987116572399201,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "07-culture_Amerindiens",
+        "score": 3.1703943092498177,
+        "website": "",
+        "google_maps": ""
+      }
+    ],
+    "metadata": {
+      "top_score": 7.49048554778399,
+      "results_count": 3,
+      "status": "success",
+      "source_type": "local",
+      "model": "mistral-large-latest"
+    }
+  }
+}
+{
+  "timestamp": "2026-01-22T20:11:04.555579",
+  "session_id": "session_1769112617273",
+  "user_query": "Que faire en 5 jours en Guyane ?",
+  "search": {
+    "results_count": 3,
+    "top_result": "04-administrations_Mairie_de_Cayenne",
+    "top_score": 5.987116572399201
+  },
+  "response": {
+    "case": 1,
+    "text": "## Mairie de Cayenne\n\n### Accueil général\n- **Adresse :** Place du Gouverneur Félix Éboué, Cayenne\n- **Horaires :** Lun–Ven 8h–17h, Sam 8h–12h\n- **Services :** Extraits de naissance, cartes d'identité...",
+    "sources": [
+      {
+        "doc_id": "04-administrations_Mairie_de_Cayenne",
+        "score": 5.987116572399201,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "07-culture_Amerindiens",
+        "score": 3.1703943092498177,
+        "website": "",
+        "google_maps": ""
+      },
+      {
+        "doc_id": "13-restaurants-remire_montjoly_Delicias_Guyane",
+        "score": 1.6516040394206828,
+        "website": "instagram.com",
+        "google_maps": "https://www.google.com/maps/place/Delicias+Guyane/data=!4m7!3m6!1s0x8d123bb99698a723:0xb369ff24b4a57956!8m2!3d4.8878076!4d-52.2769256!16s%2Fg%2F11ry0hsy48!19sChIJI6eYlrk7Eo0RVnmltCT_abM?authuser=0&hl=fr&rclk=1"
+      }
+    ],
+    "metadata": {
+      "top_score": 5.987116572399201,
+      "results_count": 3,
+      "status": "success",
+      "source_type": "local",
+      "model": "mistral-large-latest"
+    }
+  }
+}

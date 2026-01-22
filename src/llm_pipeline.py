@@ -61,7 +61,7 @@ class LLMPipeline:
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt}
             ],
-            "temperature": 0.3
+            "temperature": 1
         }
         
         try:
